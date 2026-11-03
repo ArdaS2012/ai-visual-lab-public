@@ -20,3 +20,7 @@ This edition preserves all 22 original lesson entries (13 ready experiments and 
 ## Boundaries
 
 This verifies the local educational application, not a hosted multi-user service. Windows/macOS runtime installation, every model failure mode, full offline operation and every possible interactive path have not been verified. Large model downloads are intentional and are documented in the README. GitHub CI is configured to rerun checks without downloading model weights; its run status is separate from these local observations.
+
+## Local browser origin correction — 3 November 2026
+
+A real browser POST exposed a gap in the initial verification: Next.js can reconstruct the request URL with an internal hostname, so comparing Origin against that URL rejected legitimate local users. The bridge now compares against the browser-addressed Host authority and still rejects foreign origins, protocol/port mismatches and forged forwarded-host headers. Added three regression tests; all 43 web tests, type checking, lint and the production build pass. The original command-line inference checks lacked an Origin header and therefore did not verify this browser boundary.

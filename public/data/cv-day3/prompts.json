@@ -1,0 +1,515 @@
+{
+  "provenance": {
+    "foundation": {
+      "clip": {
+        "id": "openai/clip-vit-base-patch32",
+        "revision": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+        "license": "MIT (official OpenAI CLIP repository license; model card use restrictions/disclosures still apply)",
+        "source": "https://huggingface.co/openai/clip-vit-base-patch32",
+        "runtime": "CPU Transformers4.57.1; cache matching image encodings; local preflight downloads official checkpoint.",
+        "weight_file": "pytorch_model.bin"
+      },
+      "sam": {
+        "id": "facebook/sam-vit-base",
+        "revision": "70c1a07f894ebb5b307fd9eaaee97b9dfc16068f",
+        "license": "apache-2.0",
+        "source": "https://huggingface.co/facebook/sam-vit-base",
+        "runtime": "CPU Transformers4.57.1; cache matching image encodings; local preflight downloads official checkpoint.",
+        "weight_file": "model.safetensors"
+      }
+    }
+  },
+  "mode": "Genuine pinned model preparation inference; browser chooses saved spatial outputs and recomputes scores. Notebook reruns text encoder and prompt decoder on cached image encodings.",
+  "images": [
+    {
+      "id": "bus",
+      "image": "bus.jpg",
+      "width": 810,
+      "height": 1080,
+      "text_variants": [
+        {
+          "id": "0",
+          "title": "Bare labels",
+          "image": "bus",
+          "candidates": [
+            "bus",
+            "bicycle",
+            "person"
+          ],
+          "cosines": [
+            0.26601338386535645,
+            0.2046247124671936,
+            0.2108800709247589
+          ],
+          "scores": [
+            0.9938481450080872,
+            0.0021440917626023293,
+            0.004007838666439056
+          ],
+          "scale": 100.00000762939453,
+          "scope": "Softmax over these candidates only; actual text inference and cached matching image encoding."
+        },
+        {
+          "id": "1",
+          "title": "Parallel photo wording",
+          "image": "bus",
+          "candidates": [
+            "a photo of a bus",
+            "a photo of a bicycle",
+            "a photo of a person"
+          ],
+          "cosines": [
+            0.27778127789497375,
+            0.20897670090198517,
+            0.207971453666687
+          ],
+          "scores": [
+            0.9980467557907104,
+            0.0010256650857627392,
+            0.0009275749325752258
+          ],
+          "scale": 100.00000762939453,
+          "scope": "Softmax over these candidates only; actual text inference and cached matching image encoding."
+        },
+        {
+          "id": "2",
+          "title": "Context descriptions",
+          "image": "bus",
+          "candidates": [
+            "a street scene with a bus",
+            "a street scene with a bicycle",
+            "a street scene with a person"
+          ],
+          "cosines": [
+            0.26936233043670654,
+            0.21131829917430878,
+            0.22565269470214844
+          ],
+          "scores": [
+            0.9845879673957825,
+            0.0029677969869226217,
+            0.012444255873560905
+          ],
+          "scale": 100.00000762939453,
+          "scope": "Softmax over these candidates only; actual text inference and cached matching image encoding."
+        },
+        {
+          "id": "3",
+          "title": "Different candidate set",
+          "image": "bus",
+          "candidates": [
+            "a photo of a bus",
+            "a photo of a person"
+          ],
+          "cosines": [
+            0.27778127789497375,
+            0.207971453666687
+          ],
+          "scores": [
+            0.999071478843689,
+            0.0009285272681154311
+          ],
+          "scale": 100.00000762939453,
+          "scope": "Softmax over these candidates only; actual text inference and cached matching image encoding."
+        }
+      ],
+      "spatial": [
+        {
+          "id": "ambiguous",
+          "title": "Point on bus (person target)",
+          "prompt": {
+            "points": [
+              [
+                400,
+                300
+              ]
+            ],
+            "labels": [
+              1
+            ]
+          },
+          "chosen": 0,
+          "masks": [
+            {
+              "id": 0,
+              "overlay": "bus-ambiguous-0.png",
+              "pixels": 271881,
+              "quality": 0.9018274545669556
+            },
+            {
+              "id": 1,
+              "overlay": "bus-ambiguous-1.png",
+              "pixels": 47844,
+              "quality": 0.8990216851234436
+            },
+            {
+              "id": 2,
+              "overlay": "bus-ambiguous-2.png",
+              "pixels": 31415,
+              "quality": 0.860984206199646
+            }
+          ],
+          "seconds": 0.23282241821289062
+        },
+        {
+          "id": "positive",
+          "title": "Positive person point",
+          "prompt": {
+            "points": [
+              [
+                280,
+                650
+              ]
+            ],
+            "labels": [
+              1
+            ]
+          },
+          "chosen": 0,
+          "masks": [
+            {
+              "id": 0,
+              "overlay": "bus-positive-0.png",
+              "pixels": 30291,
+              "quality": 0.7673521041870117
+            },
+            {
+              "id": 1,
+              "overlay": "bus-positive-1.png",
+              "pixels": 9130,
+              "quality": 0.6928030252456665
+            },
+            {
+              "id": 2,
+              "overlay": "bus-positive-2.png",
+              "pixels": 1076,
+              "quality": 0.39509207010269165
+            }
+          ],
+          "seconds": 0.17157483100891113
+        },
+        {
+          "id": "negative",
+          "title": "Person + excluded bus",
+          "prompt": {
+            "points": [
+              [
+                280,
+                650
+              ],
+              [
+                400,
+                300
+              ]
+            ],
+            "labels": [
+              1,
+              0
+            ]
+          },
+          "chosen": 1,
+          "masks": [
+            {
+              "id": 0,
+              "overlay": "bus-negative-0.png",
+              "pixels": 56832,
+              "quality": 0.5698075890541077
+            },
+            {
+              "id": 1,
+              "overlay": "bus-negative-1.png",
+              "pixels": 21573,
+              "quality": 0.7694379687309265
+            },
+            {
+              "id": 2,
+              "overlay": "bus-negative-2.png",
+              "pixels": 1972,
+              "quality": 0.571290135383606
+            }
+          ],
+          "seconds": 0.15868544578552246
+        },
+        {
+          "id": "box",
+          "title": "Person box",
+          "prompt": {
+            "box": [
+              218,
+              400,
+              351,
+              870
+            ]
+          },
+          "chosen": 0,
+          "masks": [
+            {
+              "id": 0,
+              "overlay": "bus-box-0.png",
+              "pixels": 32790,
+              "quality": 0.9716508984565735
+            },
+            {
+              "id": 1,
+              "overlay": "bus-box-1.png",
+              "pixels": 31454,
+              "quality": 0.9504644274711609
+            },
+            {
+              "id": 2,
+              "overlay": "bus-box-2.png",
+              "pixels": 27291,
+              "quality": 0.8598015308380127
+            }
+          ],
+          "seconds": 0.17316007614135742
+        }
+      ]
+    },
+    {
+      "id": "zidane",
+      "image": "zidane.jpg",
+      "width": 1280,
+      "height": 720,
+      "text_variants": [
+        {
+          "id": "0",
+          "title": "Bare labels",
+          "image": "zidane",
+          "candidates": [
+            "person",
+            "football",
+            "bus"
+          ],
+          "cosines": [
+            0.20097807049751282,
+            0.23403295874595642,
+            0.1966398060321808
+          ],
+          "scores": [
+            0.03459025174379349,
+            0.9429944753646851,
+            0.022415338084101677
+          ],
+          "scale": 100.00000762939453,
+          "scope": "Softmax over these candidates only; actual text inference and cached matching image encoding."
+        },
+        {
+          "id": "1",
+          "title": "Parallel photo wording",
+          "image": "zidane",
+          "candidates": [
+            "a photo of a person",
+            "a photo of a football",
+            "a photo of a bus"
+          ],
+          "cosines": [
+            0.18586215376853943,
+            0.24116916954517365,
+            0.18781331181526184
+          ],
+          "scores": [
+            0.003928707912564278,
+            0.9912960529327393,
+            0.004775156266987324
+          ],
+          "scale": 100.00000762939453,
+          "scope": "Softmax over these candidates only; actual text inference and cached matching image encoding."
+        },
+        {
+          "id": "2",
+          "title": "Context descriptions",
+          "image": "zidane",
+          "candidates": [
+            "a football player",
+            "a football ball",
+            "a parked bus"
+          ],
+          "cosines": [
+            0.19722908735275269,
+            0.21194185316562653,
+            0.16735512018203735
+          ],
+          "scores": [
+            0.18500660359859467,
+            0.8056656122207642,
+            0.009327763691544533
+          ],
+          "scale": 100.00000762939453,
+          "scope": "Softmax over these candidates only; actual text inference and cached matching image encoding."
+        },
+        {
+          "id": "3",
+          "title": "Different candidate set",
+          "image": "zidane",
+          "candidates": [
+            "a photo of a person",
+            "a football player"
+          ],
+          "cosines": [
+            0.18586216866970062,
+            0.19722910225391388
+          ],
+          "scores": [
+            0.24292786419391632,
+            0.7570720911026001
+          ],
+          "scale": 100.00000762939453,
+          "scope": "Softmax over these candidates only; actual text inference and cached matching image encoding."
+        }
+      ],
+      "spatial": [
+        {
+          "id": "ambiguous",
+          "title": "Point near background",
+          "prompt": {
+            "points": [
+              [
+                700,
+                80
+              ]
+            ],
+            "labels": [
+              1
+            ]
+          },
+          "chosen": 0,
+          "masks": [
+            {
+              "id": 0,
+              "overlay": "zidane-ambiguous-0.png",
+              "pixels": 512164,
+              "quality": 0.937869131565094
+            },
+            {
+              "id": 1,
+              "overlay": "zidane-ambiguous-1.png",
+              "pixels": 409939,
+              "quality": 0.8671084046363831
+            },
+            {
+              "id": 2,
+              "overlay": "zidane-ambiguous-2.png",
+              "pixels": 43137,
+              "quality": 0.5214148163795471
+            }
+          ],
+          "seconds": 0.1717519760131836
+        },
+        {
+          "id": "positive",
+          "title": "Positive person point",
+          "prompt": {
+            "points": [
+              [
+                1000,
+                350
+              ]
+            ],
+            "labels": [
+              1
+            ]
+          },
+          "chosen": 2,
+          "masks": [
+            {
+              "id": 0,
+              "overlay": "zidane-positive-0.png",
+              "pixels": 116983,
+              "quality": 0.7658796310424805
+            },
+            {
+              "id": 1,
+              "overlay": "zidane-positive-1.png",
+              "pixels": 7702,
+              "quality": 0.6860389709472656
+            },
+            {
+              "id": 2,
+              "overlay": "zidane-positive-2.png",
+              "pixels": 3712,
+              "quality": 0.8409186601638794
+            }
+          ],
+          "seconds": 0.1377243995666504
+        },
+        {
+          "id": "negative",
+          "title": "Person + excluded neighbor",
+          "prompt": {
+            "points": [
+              [
+                1000,
+                350
+              ],
+              [
+                400,
+                500
+              ]
+            ],
+            "labels": [
+              1,
+              0
+            ]
+          },
+          "chosen": 2,
+          "masks": [
+            {
+              "id": 0,
+              "overlay": "zidane-negative-0.png",
+              "pixels": 117318,
+              "quality": 0.6060191988945007
+            },
+            {
+              "id": 1,
+              "overlay": "zidane-negative-1.png",
+              "pixels": 5768,
+              "quality": 0.6819149255752563
+            },
+            {
+              "id": 2,
+              "overlay": "zidane-negative-2.png",
+              "pixels": 3597,
+              "quality": 0.8013927936553955
+            }
+          ],
+          "seconds": 0.16163396835327148
+        },
+        {
+          "id": "box",
+          "title": "Person box",
+          "prompt": {
+            "box": [
+              685,
+              31,
+              1150,
+              720
+            ]
+          },
+          "chosen": 0,
+          "masks": [
+            {
+              "id": 0,
+              "overlay": "zidane-box-0.png",
+              "pixels": 172975,
+              "quality": 0.9930211305618286
+            },
+            {
+              "id": 1,
+              "overlay": "zidane-box-1.png",
+              "pixels": 163172,
+              "quality": 0.9862046241760254
+            },
+            {
+              "id": 2,
+              "overlay": "zidane-box-2.png",
+              "pixels": 152579,
+              "quality": 0.921918511390686
+            }
+          ],
+          "seconds": 0.18457365036010742
+        }
+      ]
+    }
+  ]
+}

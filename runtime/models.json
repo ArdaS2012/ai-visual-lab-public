@@ -1,0 +1,5 @@
+{
+  "sentence-transformers/all-MiniLM-L6-v2": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "mixedbread-ai/mxbai-rerank-xsmall-v1": "b5c6e9da73abc3711f593f705371cdbe9e0fe422",
+  "Qwen/Qwen2.5-1.5B-Instruct": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+}

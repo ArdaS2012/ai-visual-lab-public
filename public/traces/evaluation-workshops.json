@@ -1,0 +1,365 @@
+{
+  "kind": "recorded-real-inference",
+  "events": [
+    {
+      "kind": "evaluation_start",
+      "data": {
+        "run_id": "1f847a6b-653b-4e51-acb2-d3db34dbb903",
+        "settings": {
+          "evidence": "full",
+          "format": "json"
+        },
+        "benchmark": {
+          "version": "workshop-eval-v1",
+          "sources": [
+            {
+              "id": "cedar",
+              "text": "The fictional Cedar cooking workshop has 18 seats. Registration closes on 6 November 2026. The workshop lasts 8 weeks."
+            },
+            {
+              "id": "maple",
+              "text": "The fictional Maple cooking workshop has 12 seats. Registration closes on 13 November 2026. The workshop lasts 6 weeks."
+            },
+            {
+              "id": "policy",
+              "text": "The catalogue lists only Cedar and Maple. Fees and instructor names are not recorded in this catalogue."
+            }
+          ],
+          "cases": [
+            {
+              "id": "seats",
+              "label": "Find a fact",
+              "question": "How many seats does the Cedar cooking workshop have? Give only the number.",
+              "reference": "18",
+              "aliases": [
+                "18"
+              ],
+              "relevant": [
+                "cedar"
+              ]
+            },
+            {
+              "id": "deadline",
+              "label": "Keep facts separate",
+              "question": "What is the Cedar registration deadline? Use the form D Month YYYY.",
+              "reference": "6 November 2026",
+              "aliases": [
+                "6 November 2026",
+                "06 November 2026"
+              ],
+              "relevant": [
+                "cedar"
+              ]
+            },
+            {
+              "id": "total",
+              "label": "Combine two sources",
+              "question": "How many seats are there in total across Cedar and Maple? Give only the number.",
+              "reference": "30",
+              "aliases": [
+                "30"
+              ],
+              "relevant": [
+                "cedar",
+                "maple"
+              ]
+            },
+            {
+              "id": "unknown",
+              "label": "Know when to abstain",
+              "question": "What is the Cedar workshop fee in euros? Give only the number, or UNKNOWN if it is not recorded.",
+              "reference": "UNKNOWN",
+              "aliases": [
+                "UNKNOWN"
+              ],
+              "relevant": []
+            }
+          ]
+        },
+        "benchmark_hash": "3e2d1e5659bb1aad3cb71c60e5baa6747a1e38f8eb8007e0ffe8be1802f83d50",
+        "decoding": "greedy",
+        "max_new_tokens": 100,
+        "started_at": "2026-10-31T20:00:13Z"
+      }
+    },
+    {
+      "kind": "loading",
+      "data": {
+        "reason": "Generating A \u00b7 Find a fact\u2026"
+      }
+    },
+    {
+      "kind": "evaluation_answer",
+      "data": {
+        "raw": "UNKNOWN",
+        "prompt_tokens": 90,
+        "output_tokens": 2,
+        "truncated": false,
+        "seconds": 3.776,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Answer the catalogue question using only the supplied sources. If the answer cannot be established, answer UNKNOWN. Return only a JSON object with exactly two keys: \"answer\" (string) and \"sources\" (list of source ID strings you used). Do not use markdown."
+          },
+          {
+            "role": "user",
+            "content": "Sources:\n(none supplied)\n\nQuestion: How many seats does the Cedar cooking workshop have? Give only the number."
+          }
+        ],
+        "model": "Qwen/Qwen2.5-1.5B-Instruct",
+        "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+        "run_id": "1f847a6b-653b-4e51-acb2-d3db34dbb903",
+        "case_id": "seats",
+        "variant": "A",
+        "supplied_sources": []
+      }
+    },
+    {
+      "kind": "loading",
+      "data": {
+        "reason": "Generating B \u00b7 Find a fact\u2026"
+      }
+    },
+    {
+      "kind": "evaluation_answer",
+      "data": {
+        "raw": "{\"answer\": \"18\", \"sources\": [\"cedar\"]}",
+        "prompt_tokens": 177,
+        "output_tokens": 15,
+        "truncated": false,
+        "seconds": 3.925,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Answer the catalogue question using only the supplied sources. If the answer cannot be established, answer UNKNOWN. Return only a JSON object with exactly two keys: \"answer\" (string) and \"sources\" (list of source ID strings you used). Do not use markdown."
+          },
+          {
+            "role": "user",
+            "content": "Sources:\n[cedar] The fictional Cedar cooking workshop has 18 seats. Registration closes on 6 November 2026. The workshop lasts 8 weeks.\n[maple] The fictional Maple cooking workshop has 12 seats. Registration closes on 13 November 2026. The workshop lasts 6 weeks.\n[policy] The catalogue lists only Cedar and Maple. Fees and instructor names are not recorded in this catalogue.\n\nQuestion: How many seats does the Cedar cooking workshop have? Give only the number."
+          }
+        ],
+        "model": "Qwen/Qwen2.5-1.5B-Instruct",
+        "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+        "run_id": "1f847a6b-653b-4e51-acb2-d3db34dbb903",
+        "case_id": "seats",
+        "variant": "B",
+        "supplied_sources": [
+          "cedar",
+          "maple",
+          "policy"
+        ]
+      }
+    },
+    {
+      "kind": "loading",
+      "data": {
+        "reason": "Generating A \u00b7 Keep facts separate\u2026"
+      }
+    },
+    {
+      "kind": "evaluation_answer",
+      "data": {
+        "raw": "{\n  \"answer\": \"UNKNOWN\",\n  \"sources\": []\n}",
+        "prompt_tokens": 89,
+        "output_tokens": 15,
+        "truncated": false,
+        "seconds": 3.784,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Answer the catalogue question using only the supplied sources. If the answer cannot be established, answer UNKNOWN. Return only a JSON object with exactly two keys: \"answer\" (string) and \"sources\" (list of source ID strings you used). Do not use markdown."
+          },
+          {
+            "role": "user",
+            "content": "Sources:\n(none supplied)\n\nQuestion: What is the Cedar registration deadline? Use the form D Month YYYY."
+          }
+        ],
+        "model": "Qwen/Qwen2.5-1.5B-Instruct",
+        "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+        "run_id": "1f847a6b-653b-4e51-acb2-d3db34dbb903",
+        "case_id": "deadline",
+        "variant": "A",
+        "supplied_sources": []
+      }
+    },
+    {
+      "kind": "loading",
+      "data": {
+        "reason": "Generating B \u00b7 Keep facts separate\u2026"
+      }
+    },
+    {
+      "kind": "evaluation_answer",
+      "data": {
+        "raw": "{\n  \"answer\": \"6 November 2026\",\n  \"sources\": [\"cedar\"]\n}",
+        "prompt_tokens": 176,
+        "output_tokens": 24,
+        "truncated": false,
+        "seconds": 6.534,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Answer the catalogue question using only the supplied sources. If the answer cannot be established, answer UNKNOWN. Return only a JSON object with exactly two keys: \"answer\" (string) and \"sources\" (list of source ID strings you used). Do not use markdown."
+          },
+          {
+            "role": "user",
+            "content": "Sources:\n[cedar] The fictional Cedar cooking workshop has 18 seats. Registration closes on 6 November 2026. The workshop lasts 8 weeks.\n[maple] The fictional Maple cooking workshop has 12 seats. Registration closes on 13 November 2026. The workshop lasts 6 weeks.\n[policy] The catalogue lists only Cedar and Maple. Fees and instructor names are not recorded in this catalogue.\n\nQuestion: What is the Cedar registration deadline? Use the form D Month YYYY."
+          }
+        ],
+        "model": "Qwen/Qwen2.5-1.5B-Instruct",
+        "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+        "run_id": "1f847a6b-653b-4e51-acb2-d3db34dbb903",
+        "case_id": "deadline",
+        "variant": "B",
+        "supplied_sources": [
+          "cedar",
+          "maple",
+          "policy"
+        ]
+      }
+    },
+    {
+      "kind": "loading",
+      "data": {
+        "reason": "Generating A \u00b7 Combine two sources\u2026"
+      }
+    },
+    {
+      "kind": "evaluation_answer",
+      "data": {
+        "raw": "UNKNOWN",
+        "prompt_tokens": 92,
+        "output_tokens": 2,
+        "truncated": false,
+        "seconds": 1.965,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Answer the catalogue question using only the supplied sources. If the answer cannot be established, answer UNKNOWN. Return only a JSON object with exactly two keys: \"answer\" (string) and \"sources\" (list of source ID strings you used). Do not use markdown."
+          },
+          {
+            "role": "user",
+            "content": "Sources:\n(none supplied)\n\nQuestion: How many seats are there in total across Cedar and Maple? Give only the number."
+          }
+        ],
+        "model": "Qwen/Qwen2.5-1.5B-Instruct",
+        "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+        "run_id": "1f847a6b-653b-4e51-acb2-d3db34dbb903",
+        "case_id": "total",
+        "variant": "A",
+        "supplied_sources": []
+      }
+    },
+    {
+      "kind": "loading",
+      "data": {
+        "reason": "Generating B \u00b7 Combine two sources\u2026"
+      }
+    },
+    {
+      "kind": "evaluation_answer",
+      "data": {
+        "raw": "```json\n{\n  \"answer\": 30,\n  \"sources\": [\"cedar\", \"maple\"]\n}\n```",
+        "prompt_tokens": 179,
+        "output_tokens": 27,
+        "truncated": false,
+        "seconds": 7.474,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Answer the catalogue question using only the supplied sources. If the answer cannot be established, answer UNKNOWN. Return only a JSON object with exactly two keys: \"answer\" (string) and \"sources\" (list of source ID strings you used). Do not use markdown."
+          },
+          {
+            "role": "user",
+            "content": "Sources:\n[cedar] The fictional Cedar cooking workshop has 18 seats. Registration closes on 6 November 2026. The workshop lasts 8 weeks.\n[maple] The fictional Maple cooking workshop has 12 seats. Registration closes on 13 November 2026. The workshop lasts 6 weeks.\n[policy] The catalogue lists only Cedar and Maple. Fees and instructor names are not recorded in this catalogue.\n\nQuestion: How many seats are there in total across Cedar and Maple? Give only the number."
+          }
+        ],
+        "model": "Qwen/Qwen2.5-1.5B-Instruct",
+        "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+        "run_id": "1f847a6b-653b-4e51-acb2-d3db34dbb903",
+        "case_id": "total",
+        "variant": "B",
+        "supplied_sources": [
+          "cedar",
+          "maple",
+          "policy"
+        ]
+      }
+    },
+    {
+      "kind": "loading",
+      "data": {
+        "reason": "Generating A \u00b7 Know when to abstain\u2026"
+      }
+    },
+    {
+      "kind": "evaluation_answer",
+      "data": {
+        "raw": "```json\n{\n  \"answer\": \"UNKNOWN\",\n  \"sources\": []\n}\n```",
+        "prompt_tokens": 97,
+        "output_tokens": 19,
+        "truncated": false,
+        "seconds": 4.555,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Answer the catalogue question using only the supplied sources. If the answer cannot be established, answer UNKNOWN. Return only a JSON object with exactly two keys: \"answer\" (string) and \"sources\" (list of source ID strings you used). Do not use markdown."
+          },
+          {
+            "role": "user",
+            "content": "Sources:\n(none supplied)\n\nQuestion: What is the Cedar workshop fee in euros? Give only the number, or UNKNOWN if it is not recorded."
+          }
+        ],
+        "model": "Qwen/Qwen2.5-1.5B-Instruct",
+        "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+        "run_id": "1f847a6b-653b-4e51-acb2-d3db34dbb903",
+        "case_id": "unknown",
+        "variant": "A",
+        "supplied_sources": []
+      }
+    },
+    {
+      "kind": "loading",
+      "data": {
+        "reason": "Generating B \u00b7 Know when to abstain\u2026"
+      }
+    },
+    {
+      "kind": "evaluation_answer",
+      "data": {
+        "raw": "{\"answer\": \"UNKNOWN\", \"sources\": [\"policy\"]}",
+        "prompt_tokens": 184,
+        "output_tokens": 13,
+        "truncated": false,
+        "seconds": 5.184,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Answer the catalogue question using only the supplied sources. If the answer cannot be established, answer UNKNOWN. Return only a JSON object with exactly two keys: \"answer\" (string) and \"sources\" (list of source ID strings you used). Do not use markdown."
+          },
+          {
+            "role": "user",
+            "content": "Sources:\n[cedar] The fictional Cedar cooking workshop has 18 seats. Registration closes on 6 November 2026. The workshop lasts 8 weeks.\n[maple] The fictional Maple cooking workshop has 12 seats. Registration closes on 13 November 2026. The workshop lasts 6 weeks.\n[policy] The catalogue lists only Cedar and Maple. Fees and instructor names are not recorded in this catalogue.\n\nQuestion: What is the Cedar workshop fee in euros? Give only the number, or UNKNOWN if it is not recorded."
+          }
+        ],
+        "model": "Qwen/Qwen2.5-1.5B-Instruct",
+        "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+        "run_id": "1f847a6b-653b-4e51-acb2-d3db34dbb903",
+        "case_id": "unknown",
+        "variant": "B",
+        "supplied_sources": [
+          "cedar",
+          "maple",
+          "policy"
+        ]
+      }
+    },
+    {
+      "kind": "terminal",
+      "data": {
+        "reason": "8 actual answers measured \u00b7 inspect a failed case",
+        "run_id": "1f847a6b-653b-4e51-acb2-d3db34dbb903"
+      }
+    }
+  ]
+}

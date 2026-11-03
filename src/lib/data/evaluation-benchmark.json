@@ -1,0 +1,51 @@
+{
+  "version": "workshop-eval-v1",
+  "sources": [
+    {
+      "id": "cedar",
+      "text": "The fictional Cedar cooking workshop has 18 seats. Registration closes on 6 November 2026. The workshop lasts 8 weeks."
+    },
+    {
+      "id": "maple",
+      "text": "The fictional Maple cooking workshop has 12 seats. Registration closes on 13 November 2026. The workshop lasts 6 weeks."
+    },
+    {
+      "id": "policy",
+      "text": "The catalogue lists only Cedar and Maple. Fees and instructor names are not recorded in this catalogue."
+    }
+  ],
+  "cases": [
+    {
+      "id": "seats",
+      "label": "Find a fact",
+      "question": "How many seats does the Cedar cooking workshop have? Give only the number.",
+      "reference": "18",
+      "aliases": ["18"],
+      "relevant": ["cedar"]
+    },
+    {
+      "id": "deadline",
+      "label": "Keep facts separate",
+      "question": "What is the Cedar registration deadline? Use the form D Month YYYY.",
+      "reference": "6 November 2026",
+      "aliases": ["6 November 2026", "06 November 2026"],
+      "relevant": ["cedar"]
+    },
+    {
+      "id": "total",
+      "label": "Combine two sources",
+      "question": "How many seats are there in total across Cedar and Maple? Give only the number.",
+      "reference": "30",
+      "aliases": ["30"],
+      "relevant": ["cedar", "maple"]
+    },
+    {
+      "id": "unknown",
+      "label": "Know when to abstain",
+      "question": "What is the Cedar workshop fee in euros? Give only the number, or UNKNOWN if it is not recorded.",
+      "reference": "UNKNOWN",
+      "aliases": ["UNKNOWN"],
+      "relevant": []
+    }
+  ]
+}

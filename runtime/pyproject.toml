@@ -6,7 +6,7 @@ dependencies = [
     "fastapi==0.135.1",
     "uvicorn==0.41.0",
     "transformers==5.22.1",
-    "torch==2.8.0",
+    "torch==2.15.0",
     "langchain==1.4.3",
 ]
 [[tool.uv.index]]

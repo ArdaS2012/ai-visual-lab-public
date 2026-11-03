@@ -14,8 +14,24 @@ async function bridge(
   if (request.method === "POST") {
     // A third-party website must not be able to trigger local CPU experiments.
     const origin = request.headers.get("origin");
+    // Next.js can reconstruct request.url with an internal hostname. The Host
+    // header retains the authority the browser actually addressed. Do not use
+    // forwarded-host headers here: they may come from an untrusted client.
+    const requestUrl = new URL(request.url);
+    let expectedOrigin = requestUrl.origin;
+    const host = request.headers.get("host");
+    if (host !== null) {
+      try {
+        const addressedUrl = new URL(`${requestUrl.protocol}//${host}`);
+        if (addressedUrl.host.toLowerCase() !== host.toLowerCase())
+          throw new Error("Invalid Host header");
+        expectedOrigin = addressedUrl.origin;
+      } catch {
+        return Response.json({ error: "Invalid request host" }, { status: 400 });
+      }
+    }
     if (request.headers.get("sec-fetch-site") === "cross-site" ||
-        (origin !== null && origin !== new URL(request.url).origin))
+        (origin !== null && origin !== expectedOrigin))
       return Response.json({ error: "Cross-origin experiment requests are not allowed" }, { status: 403 });
     if (request.headers.get("content-type")?.split(";")[0].trim() !== "application/json")
       return Response.json({ error: "Use application/json" }, { status: 415 });

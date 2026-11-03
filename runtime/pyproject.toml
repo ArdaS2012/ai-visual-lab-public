@@ -7,7 +7,7 @@ dependencies = [
     "uvicorn==0.41.0",
     "transformers==5.22.1",
     "torch==2.8.0",
-    "langchain==1.4.3",
+    "langchain==1.4.7",
 ]
 [[tool.uv.index]]
 name = "pytorch-cpu"

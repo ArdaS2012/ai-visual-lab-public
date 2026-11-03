@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v6
+      - uses: astral-sh/setup-uv@v7
       - run: uv sync --project runtime --locked
       - run: uv run --project runtime --locked python -m unittest discover -s runtime -p 'test_*.py' -v
       - run: uv export --project runtime --locked --no-hashes --no-emit-project --format requirements-txt --output-file /tmp/runtime-requirements.txt
